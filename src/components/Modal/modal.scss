@@ -1,0 +1,29 @@
+.modal {
+  width: min(100%, 500px);
+  height: min(100%, fit-content);
+  padding: 30px 20px;
+  top: 50%;
+  left: 50%;
+  border-radius: 20px;
+  transform: translate(-50%, -50%);
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  &__buttons {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 20px;
+  }
+}

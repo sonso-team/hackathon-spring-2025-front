@@ -1,0 +1,122 @@
+name: CI CD Pipeline
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - master
+env:
+  TARGET_DIR: /home/kinoko/hackaton/front
+jobs:
+  pre:
+    name: pre
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules # Кэшируем npm-пакеты
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
+  lint_test:
+    runs-on: ubuntu-latest
+    needs: pre
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore cached dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
+      - name: eslint
+        run: npm run lint:fix
+
+      - name: jest
+        run: npm run test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: lint_test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore cached dependencies
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: npm-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: ${{ github.workspace }}/dist
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Remove old build folder if exists
+        run: |
+          if [ -d ${{ env.TARGET_DIR }} ]; then
+            sudo rm -rf "$TARGET_DIR"
+            echo "Старая папка удалена."
+          fi
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Clean target directory
+        run: sudo rm -rf ${{ env.TARGET_DIR }} && sudo mkdir -p ${{ env.TARGET_DIR }}
+
+      - name: Copy project files
+        run: |
+          sudo cp -r ./* ${{ env.TARGET_DIR }}
+          sudo chown -R kinoko:kinoko ${{ env.TARGET_DIR }}
+
+      - name: Download built files
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+          path: /tmp/hack
+
+      - name: Copy files to server
+        run: |
+          sudo cp -r /tmp/hack/* ${{ env.TARGET_DIR }}
+          sudo rm -r /tmp/hack
+
+      - name: Confirm deployment
+        run: echo "Deployment completed successfully"

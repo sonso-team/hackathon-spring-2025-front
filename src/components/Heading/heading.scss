@@ -1,0 +1,34 @@
+.heading {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+
+  &_default {
+    color: var(--default-text-color);
+  }
+
+  &_link {
+    color: var(--link-text-color);
+    text-decoration: underline;
+  }
+
+  &_level-1 {
+    font-size: 32px;
+  }
+
+  &_level-2 {
+    font-size: 28px;
+  }
+
+  &_level-3 {
+    font-size: 26px;
+  }
+
+  &_level-4 {
+    font-size: 22px;
+  }
+
+  &_level-5 {
+    font-size: 18px;
+  }
+}

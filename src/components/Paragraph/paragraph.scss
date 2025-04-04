@@ -1,0 +1,29 @@
+.paragraph {
+  letter-spacing: 0.5px;
+  text-align: center;
+
+  &_default {
+    color: var(--default-text-color);
+  }
+
+  &_link {
+    color: var(--link-text-color);
+    text-decoration: underline;
+  }
+
+  &_level-1 {
+    font-size: 20px;
+  }
+
+  &_level-2 {
+    font-size: 18px;
+  }
+
+  &_level-3 {
+    font-size: 16px;
+  }
+
+  &_level-4 {
+    font-size: 14px;
+  }
+}
