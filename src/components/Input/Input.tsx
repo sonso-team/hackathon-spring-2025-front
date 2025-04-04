@@ -44,7 +44,7 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
     ref,
     () => ({
       isDirty,
-      isError: !!Object.values(errors).length,
+      isError: Object.values(errors).length !== 0,
       value,
     }),
     [value],
@@ -52,7 +52,7 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
 
   useEffect(() => {
     setErrors({});
-    validations.forEach((validation, index) => {
+    validations.forEach((validation: Validation) => {
       const isError = Validator[validation.name](...[value, validation.params]);
       if (isError) {
         setErrors((errors) => ({
