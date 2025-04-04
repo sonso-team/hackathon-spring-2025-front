@@ -1,12 +1,8 @@
 name: CI CD Pipeline
 on:
-  pull_request:
-    types:
-      - closed
-    branches:
-      - master
+  push: {}
 env:
-  TARGET_DIR: /home/kinoko/hackaton/front
+  TARGET_DIR: /home/kinoko/hack/front
 jobs:
   pre:
     name: pre
@@ -87,6 +83,7 @@ jobs:
           name: build-artifacts
           path: ${{ github.workspace }}/dist
   deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: self-hosted
     needs: build
     steps:
