@@ -1,45 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './home-page.scss';
-import { Button } from '../../components/Button';
-import { useModal } from '../../utils/useModal';
+import { socket } from '../../services/webSocket';
 
 const HomePage: React.FC = () => {
-  const { showModal } = useModal();
+  useEffect(() => {
+    socket.onopen = (event: Event) => {
+      console.log('Соединение открыто');
+    };
 
-  const configBasic = {
-    icon: 'error',
-    title: 'Ошибка',
-    body: 'Пользователь с таким именем уже существует',
-  };
-
-  const CustomBody = ({ ...props }) => {
-    return (
-      <div>
-        <span>Привет</span>
-        <button onClick={props.closeHandler}>Нажми на меня братан</button>
-      </div>
-    );
-  };
-
-  const configOverrideTest = {
-    overrideContent: <CustomBody />,
-  };
-  const clickHandler = () => {
-    showModal(configBasic);
-  };
-
-  const clickHandler2 = () => {
-    showModal(configOverrideTest);
-  };
-
-  return (
-    <div className="HomePage">
-      <div className="HomePage__buttons">
-        <Button onClick={clickHandler}>Открытие модалки</Button>
-        <Button onClick={clickHandler2}>Открытие модалки</Button>
-      </div>
-    </div>
-  );
+    socket.onmessage = (event: MessageEvent) => {
+      console.log(event.data);
+    };
+  }, []);
+  return <div className="HomePage"></div>;
 };
 
 export default HomePage;

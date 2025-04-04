@@ -1,18 +1,30 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useState,
+} from 'react';
 import type { Validation } from '../../utils/validator';
 import { Validator } from '../../utils/validator';
 
 export interface InputPropsI {
   initialValue: string | number;
   type: string;
-  validations: [Validation];
+  validations: [Validation] | [];
   name: string;
   placeholder: string;
   className: string;
   onChange: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: React.FC<InputPropsI> = ({ ...props }) => {
+interface InputRefI {
+  isDirty: boolean;
+  isError: boolean;
+}
+export const Input: React.FC<InputPropsI> = React.forwardRef<
+  InputRefI,
+  InputPropsI
+>((props, ref) => {
   const {
     initialValue,
     type,
@@ -26,15 +38,22 @@ export const Input: React.FC<InputPropsI> = ({ ...props }) => {
   const [value, setValue] = useState<string | number>(initialValue);
   const [isDirty, setIsDirty] = useState<boolean>(false);
   const [isValueHidden, setIsValueHidden] = useState<boolean>(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<object>({});
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      isDirty,
+      isError: !!Object.values(errors).length,
+      value,
+    }),
+    [value],
+  );
 
   useEffect(() => {
-    setIsDirty(true);
     setErrors({});
     validations.forEach((validation, index) => {
-      const isError = Validator[validation.name](
-        ...[validation.value, validation.params],
-      );
+      const isError = Validator[validation.name](...[value, validation.params]);
       if (isError) {
         setErrors((errors) => ({
           ...errors,
@@ -52,6 +71,7 @@ export const Input: React.FC<InputPropsI> = ({ ...props }) => {
   }, [type, isValueHidden]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setIsDirty(true);
     onChange(e);
     setValue(e.target.value);
   };
@@ -66,7 +86,9 @@ export const Input: React.FC<InputPropsI> = ({ ...props }) => {
         value={value}
         onChange={changeHandler}
       />
-      {isDirty && <div className="inputWrapper__errors"></div>}
+      {isDirty && (
+        <div className="inputWrapper__errors">{Object.values(errors)?.[0]}</div>
+      )}
     </div>
   );
-};
+});
