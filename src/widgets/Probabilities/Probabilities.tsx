@@ -3,7 +3,6 @@ import type { HistoryItem } from '../../types';
 import type React from 'react';
 import { Paragraph } from '../../components/Paragraph';
 import { Place } from '../../components/Place';
-import { colorMap } from '../../utils/colorMap';
 import { Bullet } from '../../components/Bullet';
 
 interface ProbabilitiesPropsI {

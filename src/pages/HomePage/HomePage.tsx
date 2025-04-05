@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './home-page.scss';
 import { SideNav } from '../../widgets/SideNav';
 import transaltion from '/src/assets/images/transaltion.png';
