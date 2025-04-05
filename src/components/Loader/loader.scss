@@ -9,13 +9,13 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: var(--default-bg-color);
+    background-color: var( --default-bg-color);
 
     &_local {
       position: fixed;
       top: 0;
       left: 0;
-      background-color: rgba(0, 0, 0, 0.21);
+      background-color: var( --default-bg-color-invise);
     }
   }
 
@@ -29,7 +29,7 @@
     --trans-duration: 1.5s;
     width: var(--edge);
     height: var(--edge);
-    background-color: #796397;
+    background-color: var(--default-text-color);
     border-radius: 50%;
 
     @keyframes  levitate {

@@ -1,0 +1,23 @@
+.LoginModal {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  align-items: center;
+  justify-content: center;
+  &__Cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__Button {
+    background-color: var(--dark-grey);
+    width: 150px;
+    height: 50px;
+  }
+}

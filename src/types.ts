@@ -1,10 +1,10 @@
 export type Probabilities = {
-  1: number;
-  2: number;
-  3: number;
-  4: number;
-  5: number;
-  6: number;
+  pos1: number;
+  pos2: number;
+  pos3: number;
+  pos4: number;
+  pos5: number;
+  pos6: number;
   inThree: number;
   inTwo: number;
 };
@@ -17,30 +17,11 @@ export type PairProbabilities = {
   e: number;
   f: number;
 };
+
 export interface HistoryItem {
   id: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | string;
   place: number;
   progress?: number;
   probabilities?: Probabilities;
   pairProbabilities?: PairProbabilities;
-}
-
-export interface DTO {
-  type: 'history' | 'sync' | 'update';
-  remainBefore: Date;
-  history: [
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-    [HistoryItem],
-  ];
-  isRunning: boolean;
-  lastResults: [HistoryItem];
-  currentRun: [HistoryItem];
 }

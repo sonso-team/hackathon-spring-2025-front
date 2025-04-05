@@ -1,10 +1,12 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import authReducer from './auth/authSlice.ts';
-import loaderReducer from './loader/loaderSlice.ts';
+import authReducer from './auth/authSlice';
+import loaderReducer from './loader/loaderSlice';
+import runnersReducer from './runners/runnersSlice';
 
 export const rootReducer = combineReducers({
   authReducer,
   loaderReducer,
+  runnersReducer,
 });
 export const setupStore = () => {
   return configureStore({
