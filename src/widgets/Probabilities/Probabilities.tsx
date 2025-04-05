@@ -1,6 +1,6 @@
 import './probabilities.scss';
-import type { HistoryItem } from '../../types';
 import type React from 'react';
+import type { HistoryItem } from '../../types';
 import { Paragraph } from '../../components/Paragraph';
 import { Place } from '../../components/Place';
 import { Bullet } from '../../components/Bullet';
