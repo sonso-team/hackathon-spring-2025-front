@@ -24,6 +24,7 @@ export const Avatar: React.FC<AvatarPropsI> = ({
       <img
         className={`Avatar__img ${color}`}
         src={src}
+        alt="Avatar"
       />
     </div>
   );
