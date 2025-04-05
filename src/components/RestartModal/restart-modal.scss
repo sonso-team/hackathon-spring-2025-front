@@ -1,0 +1,17 @@
+.RestartModal {
+  width: 310px;
+  height: 120px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  &__Button {
+    background-color: var(--dark-grey);
+    width: 200px;
+    height: 50px;
+    &:hover {
+      background-color: var(--light-dark-grey);
+    }
+  }
+}
