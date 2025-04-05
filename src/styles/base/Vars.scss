@@ -7,16 +7,28 @@ $breakpoint-5: 420px;
 
 :root{
     // Without padding container width
-    --container-width: 1280px;
+    --container-width: 1440px;
     // paddings
-    --container-padding: 15px;
-    --default-ff: 'Sans-serif';
-    --default-text-color: #000;
-    --light-text-color: #FAFAFA;
-    --link-text-color: #6c23d8;
-    --gray-dark: #b6b6b6;
-    --default-bg-color: #f9f3ff;
-    --disabled-bg: #c6c6c6;
+    --container-padding: 20px;
+    --default-ff: 'Golos Text';
+    --default-text-color: #FFFFFF;
+    --default-bg: url("/src/assets/images/background-main.png");
+    --default-bg-color: var(--black);
+
+    // backgrounds
+    --black: #1C1C1C;
+    --dark-grey: #33383E;
+
+    // palette
+    --red: #FF0000;
+    --green: #14B23E;
+    --violete: #CC00FF;
+    --brown: #8C6A0A;
+    --blue: #003BFF;
+    --yellow: #CCFF00;
+    --orange: #FFD700;
+    --light-gray: #C0C0C0;
+    --light-brown: #CD7F32;
 
     --primary-color: #5936db;
 
