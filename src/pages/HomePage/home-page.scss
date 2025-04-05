@@ -11,15 +11,18 @@
     row-gap: 20px;
   }
 
+  &__widgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
   &__translation {
     width: 100%;
     @media (max-width: $breakpoint-2) {
       max-width: 800px;
     }
-  }
-
-  &__widgets {
-    display: flex;
-    column-gap: 22px;
   }
 }

@@ -48,6 +48,18 @@
   &__bullets {
     display: flex;
     column-gap: 9px;
+
+    .bullet {
+      @keyframes show {
+        0% {
+          transform: scale(0%);
+        }
+        100% {
+          transform: scale(100%);
+        }
+      }
+      animation: show 2s;
+    }
   }
 
   &__bullets-column {

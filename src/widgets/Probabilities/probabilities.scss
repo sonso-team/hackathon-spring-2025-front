@@ -1,0 +1,85 @@
+.Probabilities {
+  padding: 16px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  background-color: var(--black);
+  max-width: fit-content;
+
+  &__content {
+    display: flex;
+    column-gap: 30px;
+  }
+
+  &__leftSide {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    align-items: flex-end;
+  }
+
+  &__places {
+    display: flex;
+    column-gap: 14px;
+    padding-right: 4px;
+  }
+
+  &__places-values {
+    display: flex;
+    column-gap: 14px;
+  }
+
+  &__runners {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+  }
+
+  &__columns {
+    display: flex;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 14px;
+    padding:0 6px;
+    &:not(:last-of-type) {
+      border-right: 2px solid var(--dark-grey);
+    }
+
+    p {
+      height: 30px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__rightSide {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    .Probabilities__places-values {
+      column-gap: 35px;
+    }
+  }
+
+  &__twoPlace, &__threePlace {
+    padding: 5px 12px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  &__twoPlace {
+    background: linear-gradient(90deg, var(--orange), var(--light-gray));
+  }
+
+  &__threePlace {
+    background: linear-gradient(90deg, var(--orange), var(--light-gray), var(--light-brown));
+  }
+}

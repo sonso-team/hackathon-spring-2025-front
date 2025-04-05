@@ -10,7 +10,6 @@ export const SideNav: React.FC = () => {
   const { showModal } = useModal();
   return (
     <aside className="sidenav">
-      <Logo />
       <Button
         onClick={() => {
           showModal({ overrideContent: <LoginModal /> });
