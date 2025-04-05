@@ -1,5 +1,6 @@
 import React from 'react';
 import './loader.scss';
+
 interface LoaderProps {
   type: 'local' | 'global';
 }
