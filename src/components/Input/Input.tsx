@@ -1,30 +1,33 @@
 import React, {
   useEffect,
+  forwardRef,
+  useRef,
   useImperativeHandle,
   useMemo,
   useState,
 } from 'react';
 import type { Validation } from '../../utils/validator';
 import { Validator } from '../../utils/validator';
+import './input.scss';
 
 export interface InputPropsI {
-  initialValue: string | number;
+  initialValue: string;
   type: string;
   validations: [Validation] | [];
   name: string;
   placeholder: string;
-  className: string;
+  className?: string;
   onChange: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface InputRefI {
+export interface InputRef {
+  value: string;
   isDirty: boolean;
+  isValueHidden: boolean;
   isError: boolean;
 }
-export const Input: React.FC<InputPropsI> = React.forwardRef<
-  InputRefI,
-  InputPropsI
->((props, ref) => {
+
+export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
   const {
     initialValue,
     type,
@@ -35,10 +38,13 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
     onChange,
   } = props;
 
-  const [value, setValue] = useState<string | number>(initialValue);
+  // Служебный ref для самого <input/>
+  const inputEl = useRef<HTMLInputElement | null>(null);
+
+  const [value, setValue] = useState<string>(initialValue);
   const [isDirty, setIsDirty] = useState<boolean>(false);
   const [isValueHidden, setIsValueHidden] = useState<boolean>(false);
-  const [errors, setErrors] = useState<object>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   useImperativeHandle(
     ref,
@@ -46,6 +52,7 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
       isDirty,
       isError: Object.values(errors).length !== 0,
       value,
+      isValueHidden,
     }),
     [value],
   );
@@ -55,13 +62,13 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
     validations.forEach((validation: Validation) => {
       const isError = Validator[validation.name](...[value, validation.params]);
       if (isError) {
-        setErrors((errors) => ({
-          ...errors,
+        setErrors((prev) => ({
+          ...prev,
           [validation.name]: validation.message,
         }));
       }
     });
-  }, [value]);
+  }, [value, validations]);
 
   const dynamicType = useMemo(() => {
     if (type !== 'password') {
@@ -76,9 +83,26 @@ export const Input: React.FC<InputPropsI> = React.forwardRef<
     setValue(e.target.value);
   };
 
+  // Пробрасываем наружу наш реальный input + дополнительные поля
+  useImperativeHandle(ref, () => {
+    // Если инпута ещё нет, вернём null (или можно выбросить ошибку)
+    if (!inputEl.current) {
+      return null;
+    }
+
+    // Объединяем всё: сам DOM-элемент + нужные нам поля
+    return Object.assign(inputEl.current, {
+      // «Дополняем» его любыми своими свойствами
+      isDirty,
+      isValueHidden,
+      isError: Object.values(errors).length !== 0,
+    });
+  }, [isDirty, isValueHidden, errors]);
+
   return (
-    <div className={`inputWrapper ${className}}`}>
+    <div className={`inputWrapper ${className || ''}`}>
       <input
+        ref={inputEl}
         type={dynamicType}
         name={name}
         placeholder={placeholder}
