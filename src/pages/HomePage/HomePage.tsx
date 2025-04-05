@@ -10,6 +10,7 @@ import { hideLocalLoader, showLocalLoader } from '../../redux/store/loader';
 import { syncData, updateData } from '../../redux/store/runners/runnersSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { RunVisualizer } from '../../widgets/RunVisualizer';
+import { PairProbabilities } from '../../widgets/PairProbabilities';
 
 export const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,7 @@ export const HomePage: React.FC = () => {
     socket.onmessage = messageHandler;
   }, []);
 
-  const { history, currentRun } = useAppSelector(
+  const { history, currentRun, isRunning } = useAppSelector(
     (state) => state.runnersReducer,
   );
 
@@ -50,7 +51,14 @@ export const HomePage: React.FC = () => {
           <div className="HomePage__widgets">
             <RunVisualizer currentRun={currentRun} />
             <LastRuns history={history} />
-            <Probabilities probabilities={currentRun} />
+            <Probabilities
+              probabilities={currentRun}
+              isRunning={isRunning}
+            />
+            <PairProbabilities
+              currentRun={currentRun}
+              isRunning={isRunning}
+            />
           </div>
         </section>
       </div>
