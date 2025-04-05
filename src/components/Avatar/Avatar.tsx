@@ -5,16 +5,20 @@ import { Place } from '../Place';
 interface AvatarPropsI {
   color: string;
   src: string;
+  className?: string;
+  isMini?: boolean;
   place?: number;
 }
 
 export const Avatar: React.FC<AvatarPropsI> = ({
   color,
   src,
+  className,
+  isMini = false,
   place = null,
 }) => {
   return (
-    <div className="Avatar">
+    <div className={`Avatar ${className}`}>
       {place && (
         <Place
           className="Avatar__Place"
@@ -22,7 +26,7 @@ export const Avatar: React.FC<AvatarPropsI> = ({
         />
       )}
       <img
-        className={`Avatar__img ${color}`}
+        className={`Avatar__img ${color} ${isMini ? 'mini' : ''}`}
         src={src}
         alt="Avatar"
       />

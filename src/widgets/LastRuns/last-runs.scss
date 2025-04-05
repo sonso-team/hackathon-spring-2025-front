@@ -1,11 +1,13 @@
 .lastRuns {
-  padding: 15px;
+  padding: 28px;
+  padding-left: 16px;
   border-radius: 10px;
   background-color: var(--black);
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   row-gap: 20px;
-  max-width: fit-content;
+  width: fit-content;
 
   &__content {
     display: flex;
@@ -27,7 +29,7 @@
     bottom: 17px;
     align-self: center;
     writing-mode: tb-rl;
-    transform:rotate(180deg);
+    transform: rotate(180deg);
   }
 
   &__places {

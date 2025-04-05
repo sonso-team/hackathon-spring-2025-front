@@ -1,0 +1,18 @@
+.RunVisualizer {
+  width: 495px;
+  height: 408px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black);
+  border-radius: 10px;
+  padding: 28px;
+  padding-top: 28px;
+  &__ProgressLines {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+    flex: 0.8;
+  }
+}
