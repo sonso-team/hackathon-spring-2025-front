@@ -3,7 +3,7 @@ import type React from 'react';
 import { colorMap } from '../../utils/colorMap';
 
 interface BulletPropsI {
-  id: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' | string;
+  id: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | string;
 }
 
 export const Bullet: React.FC<BulletPropsI> = ({ id }) => {

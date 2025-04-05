@@ -1,10 +1,10 @@
 import React, {
   useEffect,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
   useMemo,
   useState,
-  forwardRef,
-  useImperativeHandle,
-  useRef,
 } from 'react';
 import type { Validation } from '../../utils/validator';
 import { Validator } from '../../utils/validator';
@@ -25,7 +25,6 @@ export interface InputRef {
   isDirty: boolean;
   isValueHidden: boolean;
   isError: boolean;
-  // и, если надо, ещё какие-то методы: focus(): void;
 }
 
 export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
@@ -47,13 +46,24 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
   const [isValueHidden, setIsValueHidden] = useState<boolean>(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      isDirty,
+      isError: Object.values(errors).length !== 0,
+      value,
+    }),
+    [value],
+  );
+
   useEffect(() => {
-    setIsDirty(true);
     setErrors({});
     validations.forEach((validation) => {
       const isError = Validator[validation.name](
         ...[validation.value, validation.params],
       );
+    validations.forEach((validation: Validation) => {
+      const isError = Validator[validation.name](...[value, validation.params]);
       if (isError) {
         setErrors((prev) => ({
           ...prev,
@@ -71,6 +81,7 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
   }, [type, isValueHidden]);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setIsDirty(true);
     onChange(e);
     setValue(e.target.value);
   };
@@ -102,7 +113,9 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
         value={value}
         onChange={changeHandler}
       />
-      {isDirty && <div className="inputWrapper__errors"></div>}
+      {isDirty && (
+        <div className="inputWrapper__errors">{Object.values(errors)?.[0]}</div>
+      )}
     </div>
   );
 });

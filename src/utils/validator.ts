@@ -4,7 +4,7 @@ const cyrillicRegexp = /^[-а-яА-ЯёЁ\s]+$/;
 
 export type Validation = {
   name: string;
-  value: unknown;
+  value?: unknown;
   params?: object;
   message: string;
 };

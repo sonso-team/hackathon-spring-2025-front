@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from '../../components/Loader';
-import { AppRouter } from './index.ts';
 import { useAppSelector } from '../../redux/hooks';
+import { AppRouter } from './index.ts';
 
 export const AppInitial: React.FC = () => {
   const { isGlobalLoaderLoading, isLocalLoaderLoading } = useAppSelector(

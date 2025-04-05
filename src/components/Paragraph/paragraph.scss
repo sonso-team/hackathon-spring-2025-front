@@ -11,6 +11,10 @@
     text-decoration: underline;
   }
 
+  &_muted {
+    color: var(--muted);
+  }
+
   &_level-1 {
     font-size: 20px;
   }
