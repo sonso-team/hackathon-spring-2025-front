@@ -83,6 +83,7 @@ jobs:
           name: build-artifacts
           path: ${{ github.workspace }}/dist
   deploy:
+    if: github.ref == 'refs/heads/master'
     runs-on: self-hosted
     needs: build
     steps:
