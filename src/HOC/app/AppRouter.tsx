@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
-import HomePage from '../../pages/HomePage/HomePage.tsx';
+import { HomePage } from '../../pages/HomePage';
 import { MainLayout } from '../../layouts/MainLayout';
 
 export const AppRouter: React.FC = () => {
