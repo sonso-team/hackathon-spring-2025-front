@@ -52,16 +52,13 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
       isDirty,
       isError: Object.values(errors).length !== 0,
       value,
+      isValueHidden,
     }),
     [value],
   );
 
   useEffect(() => {
     setErrors({});
-    validations.forEach((validation) => {
-      const isError = Validator[validation.name](
-        ...[validation.value, validation.params],
-      );
     validations.forEach((validation: Validation) => {
       const isError = Validator[validation.name](...[value, validation.params]);
       if (isError) {
