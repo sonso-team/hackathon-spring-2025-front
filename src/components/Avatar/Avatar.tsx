@@ -5,16 +5,22 @@ import { Place } from '../Place';
 interface AvatarPropsI {
   color: string;
   src: string;
-  place: number;
+  place?: number;
 }
 
-export const Avatar: React.FC<AvatarPropsI> = ({ color, src, place }) => {
+export const Avatar: React.FC<AvatarPropsI> = ({
+  color,
+  src,
+  place = null,
+}) => {
   return (
     <div className="Avatar">
-      <Place
-        className="Avatar__Place"
-        place={place}
-      />
+      {place && (
+        <Place
+          className="Avatar__Place"
+          place={place}
+        />
+      )}
       <img
         className={`Avatar__img ${color}`}
         src={src}

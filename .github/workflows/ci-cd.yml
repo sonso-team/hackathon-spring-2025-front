@@ -2,7 +2,7 @@ name: CI CD Pipeline
 on:
   push: {}
 env:
-  TARGET_DIR: /home/kinoko/hackaton/front
+  TARGET_DIR: /home/kinoko/hack/front
 jobs:
   pre:
     name: pre

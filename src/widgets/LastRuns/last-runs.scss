@@ -1,0 +1,61 @@
+.lastRuns {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: var(--black);
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  max-width: fit-content;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    column-gap: 14px;
+  }
+
+  &__leftSide {
+    height: 100%;
+    display: flex;
+    padding-right: 14px;
+    column-gap: 14px;
+    align-items: flex-start;
+    border-right: 2px solid var(--dark-grey);
+  }
+
+  &__placeLabel {
+    position: relative;
+    bottom: 17px;
+    align-self: center;
+    writing-mode: tb-rl;
+    transform:rotate(180deg);
+  }
+
+  &__places {
+    display: flex;
+    flex-direction: column;
+    row-gap: 9px;
+  }
+
+  &__rightSide {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  &__bullets {
+    display: flex;
+    column-gap: 9px;
+  }
+
+  &__bullets-column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+
+  &__legends {
+    display: flex;
+    justify-content: space-between;
+  }
+}

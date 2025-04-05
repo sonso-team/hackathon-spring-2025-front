@@ -1,4 +1,4 @@
-type Probabilities = {
+export type Probabilities = {
   1: number;
   2: number;
   3: number;
@@ -9,7 +9,7 @@ type Probabilities = {
   inTwo: number;
 };
 
-type PairProbabilities = {
+export type PairProbabilities = {
   a: number;
   b: number;
   c: number;
@@ -17,17 +17,17 @@ type PairProbabilities = {
   e: number;
   f: number;
 };
-interface HistoryItem {
-  id: 'a' | 'b' | 'c' | 'd' | 'e' | 'f';
+export interface HistoryItem {
+  id: 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | string;
   place: number;
   progress?: number;
   probabilities?: Probabilities;
   pairProbabilities?: PairProbabilities;
 }
 
-interface DTO {
-  type: 'sync' | 'update';
-  remainBefore: Date; // update
+export interface DTO {
+  type: 'history' | 'sync' | 'update';
+  remainBefore: Date;
   history: [
     [HistoryItem],
     [HistoryItem],
@@ -39,8 +39,8 @@ interface DTO {
     [HistoryItem],
     [HistoryItem],
     [HistoryItem],
-  ]; // update
-  isRunning: boolean; // update и sync?
-  lastResults: [HistoryItem]; // update
-  currentRun: [HistoryItem]; // sync
+  ];
+  isRunning: boolean;
+  lastResults: [HistoryItem];
+  currentRun: [HistoryItem];
 }
