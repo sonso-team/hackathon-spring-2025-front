@@ -7,7 +7,6 @@ import { Button } from '../../components/Button';
 export const SideNav: React.FC = () => {
   return (
     <aside className="sidenav">
-      <Logo />
       <Button onClick={() => {}}>Настройки</Button>
       <RunnersList />
     </aside>
