@@ -49,13 +49,13 @@ export const LastRuns: React.FC<LastRunsPropsI> = memo(({ history }) => {
               mode="muted"
               level={1}
             >
-              Новые
+              Старые
             </Paragraph>
             <Paragraph
               mode="muted"
               level={1}
             >
-              Старые
+              Новые
             </Paragraph>
           </div>
         </div>
