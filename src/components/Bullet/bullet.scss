@@ -1,0 +1,28 @@
+.bullet {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  &_red {
+    background-color: var(--red);
+  }
+
+  &_yellow {
+    background-color: var(--yellow);
+  }
+
+  &_green {
+    background-color: var(--green);
+  }
+
+  &_violete {
+    background-color: var(--violete);
+  }
+
+  &_brown {
+    background-color: var(--brown);
+  }
+
+  &_blue {
+    background-color: var(--blue);
+  }
+}
