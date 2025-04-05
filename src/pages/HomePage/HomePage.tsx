@@ -3,6 +3,7 @@ import './home-page.scss';
 import { SideNav } from '../../widgets/SideNav';
 import transaltion from '/src/assets/images/transaltion.png';
 import { LastRuns } from '../../widgets/LastRuns';
+import { RunVisualizer } from '../../widgets/RunVisualizer';
 
 export const HomePage: React.FC = () => {
   const historyRaces = [
@@ -87,6 +88,15 @@ export const HomePage: React.FC = () => {
       { id: 'f', place: 4 },
     ],
   ];
+  const avatarColorMap = ['red', 'brown', 'yellow', 'blue', 'green', 'violete'];
+  const srcMap = [
+    'src/assets/images/person1.jpg',
+    'src/assets/images/person2.jpg',
+    'src/assets/images/person3.jpg',
+    'src/assets/images/person4.jpg',
+    'src/assets/images/person5.jpg',
+    'src/assets/images/person6.jpg',
+  ];
   return (
     <div className="HomePage">
       <SideNav />
@@ -97,6 +107,10 @@ export const HomePage: React.FC = () => {
           alt="translation"
         />
         <LastRuns history={historyRaces} />
+        <RunVisualizer
+          AvatarColorMap={avatarColorMap}
+          AvatarSrcMap={srcMap}
+        />
       </section>
     </div>
   );
