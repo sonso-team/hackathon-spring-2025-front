@@ -6,8 +6,8 @@ $breakpoint-4: 570px;
 $breakpoint-5: 420px;
 
 :root {
-  // Without padding container width
-  --container-width: 1200px;
+
+  --container-width: 1400px;
   // paddings
   --container-padding: 20px;
   --default-ff: 'Golos Text';
@@ -20,6 +20,20 @@ $breakpoint-5: 420px;
   --black: #1c1c1c;
   --dark-grey: #33383e;
   --light-dark-grey: #434a52;
+  // palette
+  --red: #ff0000;
+  --green: #14b23e;
+  --violete: #cc00ff;
+  --brown: #8c6a0a;
+  --blue: #003bff;
+  --yellow: #ccff00;
+  --orange: #ffd700;
+  --light-gray: #c0c0c0;
+  --light-brown: #cd7f32;
+  --muted: #5b626c;
+
+  --primary-color: #5936db;
+
   // palette
   --red: #ff0000;
   --green: #14b23e;

@@ -5,9 +5,13 @@ import { RunnersList } from '../RunnersList';
 import { Button } from '../../components/Button';
 import { useModal } from '../../utils/useModal';
 import { LoginModal } from '../../components/LoginModal';
+import { useAppSelector } from '../../redux/hooks';
 
 export const SideNav: React.FC = () => {
   const { showModal } = useModal();
+  const { currentRun, lastResults } = useAppSelector(
+    (state) => state.runnersReducer,
+  );
   return (
     <aside className="sidenav">
       <Button
@@ -17,7 +21,7 @@ export const SideNav: React.FC = () => {
       >
         Настройки
       </Button>
-      <RunnersList />
+      <RunnersList currentRun={currentRun.length ? currentRun : lastResults} />
     </aside>
   );
 };

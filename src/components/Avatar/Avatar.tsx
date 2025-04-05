@@ -26,7 +26,7 @@ export const Avatar: React.FC<AvatarPropsI> = ({
         />
       )}
       <img
-        className={`Avatar__img ${color} ${isMini ? 'mini' : ''}`}
+        className={`Avatar__img ${color ? color : ''} ${isMini ? 'mini' : ''}`}
         src={src}
         alt="Avatar"
       />

@@ -1,39 +1,36 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import type { RefObject } from 'react';
+import React, { memo } from 'react';
 import { iconMap } from '../../utils/iconMap';
 import './progress-slider.scss';
 import { Avatar } from '../Avatar';
+import { colorMap } from '../../utils/colorMap';
 
 interface ProgressSliderProps {
-  AvatarColor: string;
-  src: string;
+  id: string;
   progress: number;
+  ref?: RefObject<HTMLImageElement>;
 }
 
-export const ProgressSlider: React.FC<ProgressSliderProps> = ({
-  AvatarColor,
-  src,
-  progress,
-}) => {
-  //5,05 px = 1%
-  // 8 + 505 = финиш
-  //это перекинем на верхний компонент
-
-  return (
-    <div className="ProgressSlider">
-      <img src={iconMap.progressLine} />
-      <motion.div
-        className="ProgressSlider__AvatarWrapper"
-        animate={{ x: progress }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
-      >
-        <Avatar
-          color={AvatarColor}
-          src={src}
-          isMini
-          className="ProgressSlider__Avatar"
+export const ProgressSlider: React.FC<ProgressSliderProps> = memo(
+  ({ id, progress, ref }) => {
+    return (
+      <div className="ProgressSlider">
+        <img
+          src={iconMap.progressLine}
+          alt=""
         />
-      </motion.div>
-    </div>
-  );
-};
+        <div
+          className="ProgressSlider__AvatarWrapper"
+          style={{ left: progress }}
+        >
+          <Avatar
+            color={colorMap[id]}
+            src={iconMap[id]}
+            isMini
+            className="ProgressSlider__Avatar"
+          />
+        </div>
+      </div>
+    );
+  },
+);

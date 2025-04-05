@@ -21,8 +21,8 @@
 
   &__places {
     display: flex;
-    column-gap: 14px;
-    padding-right: 4px;
+    column-gap: 17px;
+    padding-right: 10px;
   }
 
   &__places-values {
@@ -44,7 +44,8 @@
     display: flex;
     flex-direction: column;
     row-gap: 14px;
-    padding:0 6px;
+    width: 50px;
+    padding: 0 6px;
     &:not(:last-of-type) {
       border-right: 2px solid var(--dark-grey);
     }
@@ -66,7 +67,8 @@
     }
   }
 
-  &__twoPlace, &__threePlace {
+  &__twoPlace,
+  &__threePlace {
     padding: 5px 12px;
     height: 32px;
     display: flex;
@@ -80,6 +82,11 @@
   }
 
   &__threePlace {
-    background: linear-gradient(90deg, var(--orange), var(--light-gray), var(--light-brown));
+    background: linear-gradient(
+      90deg,
+      var(--orange),
+      var(--light-gray),
+      var(--light-brown)
+    );
   }
 }

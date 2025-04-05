@@ -1,6 +1,7 @@
 .ProgressSlider {
   position: relative;
   &__AvatarWrapper {
+    transition: linear 1s left;
     position: absolute;
     top: -15px;
     left: 8px;
