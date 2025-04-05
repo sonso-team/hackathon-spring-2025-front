@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ReactElement } from 'react';
 import './button.scss';
-import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 
 interface ButtonPropsI {
