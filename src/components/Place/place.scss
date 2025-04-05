@@ -1,0 +1,22 @@
+.place {
+  padding: 5px 12px;
+  border-radius: 10px;
+  background-color: var(--dark-grey);
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &_1 {
+    background-color: var(--orange);
+  }
+
+  &_2 {
+    background-color: var(--light-gray);
+  }
+
+  &_3 {
+    background-color: var(--light-brown);
+  }
+}

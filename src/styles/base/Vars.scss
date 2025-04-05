@@ -1,13 +1,13 @@
 // Media breakpoints
 $breakpoint-1: 1300px;
-$breakpoint-2: 1020px;
+$breakpoint-2: 1200px;
 $breakpoint-3: 790px;
 $breakpoint-4: 570px;
 $breakpoint-5: 420px;
 
 :root{
     // Without padding container width
-    --container-width: 1440px;
+    --container-width: 1200px;
     // paddings
     --container-padding: 20px;
     --default-ff: 'Golos Text';
