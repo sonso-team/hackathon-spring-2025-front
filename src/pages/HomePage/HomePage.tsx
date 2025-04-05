@@ -106,11 +106,13 @@ export const HomePage: React.FC = () => {
           className="HomePage__translation"
           alt="translation"
         />
-        <LastRuns history={historyRaces} />
-        <RunVisualizer
-          AvatarColorMap={avatarColorMap}
-          AvatarSrcMap={srcMap}
-        />
+        <div className="HomePage__widgets">
+          <RunVisualizer
+            AvatarColorMap={avatarColorMap}
+            AvatarSrcMap={srcMap}
+          />
+          <LastRuns history={historyRaces} />
+        </div>
       </section>
     </div>
   );

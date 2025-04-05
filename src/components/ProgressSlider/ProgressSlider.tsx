@@ -15,13 +15,9 @@ export const ProgressSlider: React.FC<ProgressSliderProps> = ({
   src,
   progress,
 }) => {
-  const [progresss, setProgresss] = useState(0); //мок, это будет подтягиваться из стора
   //5,05 px = 1%
   // 8 + 505 = финиш
   //это перекинем на верхний компонент
-  const moveRight = (px: number) => {
-    setProgresss((prev) => prev + px);
-  };
 
   return (
     <div className="ProgressSlider">

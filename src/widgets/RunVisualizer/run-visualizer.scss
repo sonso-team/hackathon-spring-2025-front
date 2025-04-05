@@ -1,5 +1,5 @@
 .RunVisualizer {
-  width: 611px;
+  width: 495px;
   height: 408px;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   align-items: center;
   background-color: var(--black);
   border-radius: 10px;
-  padding: 16px;
+  padding: 28px;
   padding-top: 28px;
   &__ProgressLines {
     display: flex;

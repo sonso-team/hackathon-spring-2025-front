@@ -17,4 +17,9 @@
       max-width: 800px;
     }
   }
+
+  &__widgets {
+    display: flex;
+    column-gap: 22px;
+  }
 }

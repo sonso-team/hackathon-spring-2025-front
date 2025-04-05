@@ -24,7 +24,7 @@ export const RunVisualizer: React.FC<RunVisualizerProps> = ({
         <ProgressSlider
           AvatarColor={AvatarColorMap[0]}
           src={AvatarSrcMap[0]}
-          progress={0}
+          progress={39}
         />
         <ProgressSlider
           AvatarColor={AvatarColorMap[1]}
