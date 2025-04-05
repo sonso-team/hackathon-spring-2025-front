@@ -4,7 +4,7 @@ import { SideNav } from '../../widgets/SideNav';
 import transaltion from '/src/assets/images/transaltion.png';
 import { LastRuns } from '../../widgets/LastRuns';
 
-const HomePage: React.FC = () => {
+export const HomePage: React.FC = () => {
   const historyRaces = [
     [
       { id: 'a', place: 3 },
@@ -100,19 +100,4 @@ const HomePage: React.FC = () => {
       </section>
     </div>
   );
-import { socket } from '../../services/webSocket';
-
-const HomePage: React.FC = () => {
-  useEffect(() => {
-    socket.onopen = (event: Event) => {
-      console.log('Соединение открыто');
-    };
-
-    socket.onmessage = (event: MessageEvent) => {
-      console.log(event.data);
-    };
-  }, []);
-  return <div className="HomePage"></div>;
 };
-
-export default HomePage;
