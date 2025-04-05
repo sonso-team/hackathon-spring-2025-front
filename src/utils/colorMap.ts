@@ -1,8 +1,8 @@
 export const colorMap = {
-  A: 'red',
-  B: 'blue',
-  C: 'green',
-  D: 'yellow',
-  E: 'violete',
-  F: 'brown',
+  a: 'red',
+  b: 'blue',
+  c: 'green',
+  d: 'yellow',
+  e: 'violete',
+  f: 'brown',
 };
