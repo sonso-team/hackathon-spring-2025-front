@@ -1,9 +1,9 @@
 import React from 'react';
 import './home-page.scss';
 import { SideNav } from '../../widgets/SideNav';
-import transaltion from './../../assets/images/transaltion.png';
 import { Place } from '../../components/Place';
 import { Bullet } from '../../components/Bullet';
+import transaltion from './/src/assets/images/transaltion.png';
 
 const HomePage: React.FC = () => {
   return (
