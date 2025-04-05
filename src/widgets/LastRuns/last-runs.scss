@@ -1,17 +1,15 @@
 .lastRuns {
   padding: 28px;
-  padding-left: 16px;
   border-radius: 10px;
   background-color: var(--black);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   row-gap: 20px;
   width: fit-content;
 
   &__content {
     display: flex;
-    align-items: flex-start;
     column-gap: 14px;
   }
 
@@ -47,6 +45,7 @@
 
   &__bullets {
     display: flex;
+    justify-content: space-between;
     column-gap: 9px;
 
     .bullet {

@@ -9,6 +9,7 @@ import { socket } from '../../services/webSocket';
 import { hideLocalLoader, showLocalLoader } from '../../redux/store/loader';
 import { syncData, updateData } from '../../redux/store/runners/runnersSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { RunVisualizer } from '../../widgets/RunVisualizer';
 
 export const HomePage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -47,6 +48,7 @@ export const HomePage: React.FC = () => {
             alt="translation"
           />
           <div className="HomePage__widgets">
+            <RunVisualizer currentRun={currentRun} />
             <LastRuns history={history} />
             <Probabilities probabilities={currentRun} />
           </div>
