@@ -1,0 +1,36 @@
+.Avatar {
+  width: 78px;
+  height: 78px;
+  position: relative;
+  &__img {
+    width: 78px;
+    height: 78px;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 4px;
+  }
+  &__Place {
+    position: absolute;
+    right: -5px;
+    top: -10px;
+    font-weight: 500;
+  }
+}
+.red {
+  border-color: var(--red);
+}
+.green {
+  border-color: var(--green);
+}
+.violete {
+  border-color: var(--violete);
+}
+.brown {
+  border-color: var(--brown);
+}
+.blue {
+  border-color: var(--blue);
+}
+.yellow {
+  border-color: var(--yellow);
+}

@@ -5,7 +5,7 @@ import './paragraph.scss';
 interface ParagraphPropsI {
   children: string | ReactElement;
   level: 1 | 2 | 3 | 4;
-  mode?: 'default' | 'link';
+  mode?: 'default' | 'link' | 'muted';
   className?: string;
 }
 

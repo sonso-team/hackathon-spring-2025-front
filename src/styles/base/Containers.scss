@@ -1,4 +1,8 @@
 body {
+  color: var(--default-text-color);
+  background: var(--default-bg);
   background-color: var(--default-bg-color);
-  font-family: var(--default-ff), serif;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: var(--default-ff), sans-serif;
 }
