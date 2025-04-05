@@ -15,12 +15,6 @@ const HomePage: React.FC = () => {
           className="HomePage__translation"
           alt="translation"
         />
-        {[1, 2, 3, 4, 5, 6].map((item) => (
-          <Place place={item} />
-        ))}
-        {['A', 'B', 'C', 'D', 'E', 'F'].map((item) => (
-          <Bullet id={item} />
-        ))}
       </section>
     </div>
   );

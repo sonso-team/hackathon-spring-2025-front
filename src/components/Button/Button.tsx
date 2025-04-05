@@ -2,6 +2,7 @@ import React from 'react';
 import type { ReactElement } from 'react';
 import './button.scss';
 import { Heading } from '../Heading';
+import { Paragraph } from '../Paragraph';
 
 interface ButtonPropsI {
   disabled?: boolean;
@@ -38,7 +39,7 @@ export const Button: React.FC<ButtonPropsI> = ({ ...props }) => {
       disabled={disabled}
     >
       {typeof children === 'string' ? (
-        <Heading level={5}>{children}</Heading>
+        <Paragraph level={1}>{children}</Paragraph>
       ) : (
         children
       )}
