@@ -1,12 +1,12 @@
 import React from 'react';
-import logoBackground from './../../assets/images/logo-bg.png';
 import './logo.scss';
+import { iconMap } from '../../utils/iconMap';
 
 export const Logo: React.FC = () => {
   return (
     <div className="logo">
       <img
-        src={logoBackground}
+        src={iconMap.logo}
         alt="backgroundLogo"
       />
     </div>
