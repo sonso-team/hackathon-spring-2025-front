@@ -21,7 +21,7 @@ export const Heading: React.FC<HeadingPropsI> = ({ ...props }) => {
 
   return (
     <h1
-      className={`heading heading_level-${level} ${className} ${mode ? `heading${mode}` : ''}`}
+      className={`heading heading_level-${level} ${className} ${mode ? `heading_${mode}` : ''}`}
     >
       {children}
     </h1>
