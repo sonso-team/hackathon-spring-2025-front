@@ -1,8 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { IRunnersResponse, IRunnersState } from './types.ts';
 import type { HistoryItem } from '../../../types';
 import type { IAuthResponse } from '../auth/types';
+import type { IRunnersResponse, IRunnersState } from './types.ts';
 
 const initialState: IRunnersState = {
   remainBefore: new Date(),
