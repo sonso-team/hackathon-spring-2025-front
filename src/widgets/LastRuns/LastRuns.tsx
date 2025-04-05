@@ -1,5 +1,5 @@
 import './last-runs.scss';
-import React from 'react';
+import React, { memo } from 'react';
 import type { HistoryItem } from '../../types';
 import { Paragraph } from '../../components/Paragraph';
 import { Place } from '../../components/Place';
@@ -8,7 +8,7 @@ import { Bullet } from '../../components/Bullet';
 interface LastRunsPropsI {
   history: HistoryItem[][];
 }
-export const LastRuns: React.FC<LastRunsPropsI> = ({ history }) => {
+export const LastRuns: React.FC<LastRunsPropsI> = memo(({ history }) => {
   return (
     <div className="lastRuns">
       <Paragraph
@@ -27,7 +27,7 @@ export const LastRuns: React.FC<LastRunsPropsI> = ({ history }) => {
             Место
           </Paragraph>
           <div className="lastRuns__places">
-            {new Array(6).fill(0).map((_, index) => (
+            {new Array(6).fill(null).map((_, index) => (
               <Place place={index + 1} />
             ))}
           </div>
@@ -37,11 +37,9 @@ export const LastRuns: React.FC<LastRunsPropsI> = ({ history }) => {
             {history.map((col) => {
               return (
                 <div className="lastRuns__bullets-column">
-                  {col
-                    .sort((a, b) => a.place - b.place)
-                    .map((item) => {
-                      return <Bullet id={item.id} />;
-                    })}
+                  {col.map((item) => {
+                    return <Bullet id={item.id} />;
+                  })}
                 </div>
               );
             })}
@@ -64,4 +62,4 @@ export const LastRuns: React.FC<LastRunsPropsI> = ({ history }) => {
       </div>
     </div>
   );
-};
+});

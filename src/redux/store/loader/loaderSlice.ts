@@ -25,7 +25,11 @@ const loaderSlice = createSlice({
   },
 });
 
-export const { showLocalLoader, showGlobalLoader, hideLocalLoader, hideGlobalLoader } =
-  loaderSlice.actions;
+export const {
+  showLocalLoader,
+  showGlobalLoader,
+  hideLocalLoader,
+  hideGlobalLoader,
+} = loaderSlice.actions;
 
 export default loaderSlice.reducer;

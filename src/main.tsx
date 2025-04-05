@@ -1,10 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import {Provider} from "react-redux";
-import App from './App.tsx'
-import {setupStore} from "./redux/store/store.ts";
+import { createRoot } from 'react-dom/client';
+import App from './App.tsx';
 
-createRoot(document.getElementById('root')!).render(
-  <Provider store={setupStore()}>
-    <App />
-  </Provider>
-)
+createRoot(document.getElementById('root')!).render(<App />);
