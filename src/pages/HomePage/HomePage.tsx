@@ -33,7 +33,6 @@ export const HomePage: React.FC = () => {
   const { history, currentRun } = useAppSelector(
     (state) => state.runnersReducer,
   );
-
   return (
     <>
       <header className="header">

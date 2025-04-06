@@ -22,6 +22,38 @@
   height: 40px;
   border-width: 3px;
 }
+.avatar-settings {
+  overflow: hidden;
+  position: relative;
+}
+.avatar-settings::after {
+  content: '';
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  background: rgba(0, 0, 0, 0); /* изначально прозрачный */
+  transition: background-color 0.3s;
+  border-radius: 100%;
+}
+
+.avatar-settings:hover::after {
+  background: rgba(0, 0, 0, 0.6); /* затемнение в 40% */
+}
+
+.avatar-settings::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* Замените путь к иконке на свой */
+  background: url('../../assets/icons/edit.svg') no-repeat center / 24px 24px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 5; /* над затемнением */
+  cursor: pointer;
+}
+
+.avatar-settings:hover::before {
+  opacity: 1;
+}
 .red {
   border-color: var(--red);
 }
