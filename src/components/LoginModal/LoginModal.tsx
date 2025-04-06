@@ -5,18 +5,15 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import './login-modal.scss';
 import { iconMap } from '../../utils/iconMap';
-import type { IAuthData } from '../../redux/store/auth/types';
 import { login } from '../../redux/store/auth/authThunks';
 import { useAppDispatch } from '../../redux/hooks';
 import { useModal } from '../../utils/useModal';
-import { SettingsModal } from '../SettingsModal';
 
 interface LoginModalPropsI {
   closeHandler?(): void;
 }
 
 export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
-  const { showModal } = useModal();
   const loginRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
   const dispatch = useAppDispatch();
@@ -49,9 +46,7 @@ export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
         className=""
         name="login"
         placeholder="Логин"
-        onChange={() => {
-          console.log(loginRef.current.isError);
-        }}
+        onChange={() => {}}
       />
       <Input
         ref={passwordRef}
@@ -61,9 +56,7 @@ export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
         className=""
         name="password"
         placeholder="Пароль"
-        onChange={() => {
-          console.log(passwordRef.current.value);
-        }}
+        onChange={() => {}}
       />
       <Button
         className="LoginModal__Button"
