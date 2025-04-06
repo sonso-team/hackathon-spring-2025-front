@@ -40,8 +40,8 @@ export const HomePage: React.FC = () => {
       <header className="header">
         <Logo />
       </header>
+      <SideNav />
       <div className="HomePage">
-        <SideNav />
         <section className="HomePage__content">
           <img
             src={transaltion}

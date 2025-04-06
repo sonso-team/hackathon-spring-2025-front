@@ -2,7 +2,9 @@
 .HomePage {
   display: flex;
   column-gap: 20px;
-  justify-content: space-between;
+  justify-content: flex-end;
+  max-width: 1208px;
+  margin-left: 175px;
 
   &__content {
     display: flex;
