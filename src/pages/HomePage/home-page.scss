@@ -5,10 +5,16 @@
   justify-content: space-between;
 
   &__content {
+    overflow-y: scroll;
+    max-height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
     flex-shrink: 1;
     row-gap: 20px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__widgets {
