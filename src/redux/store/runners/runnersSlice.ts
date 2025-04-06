@@ -1,7 +1,5 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { HistoryItem } from '../../../types';
-import type { IAuthResponse } from '../auth/types';
 import type { IRunnersResponse, IRunnersState } from './types.ts';
 
 const initialState: IRunnersState = {
@@ -17,7 +15,9 @@ const runnersSlice = createSlice({
   initialState,
   reducers: {
     updateData(state: IRunnersState, action: PayloadAction<IRunnersResponse>) {
+      state.lastResults = action.payload.lastResults;
       state.history = action.payload.history;
+      state.currentRun = action.payload.currentRun;
       state.isRunning = action.payload.isRunning;
       state.remainBefore = action.payload.remainBefore;
     },

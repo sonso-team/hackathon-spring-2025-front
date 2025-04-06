@@ -1,3 +1,4 @@
+@import './../../styles/base/Vars';
 .RunnersList {
   display: flex;
   flex-direction: column;
@@ -8,11 +9,20 @@
   border-radius: 10px;
   padding: 16px;
   background-color: var(--black);
+
   &__Avatars {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+  }
+  &__Avatars-settings {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 22px;
   }
 }

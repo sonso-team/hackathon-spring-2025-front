@@ -45,7 +45,8 @@
 
   &__bullets {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-grow: 1;
     column-gap: 9px;
     min-width: 381px;
 
