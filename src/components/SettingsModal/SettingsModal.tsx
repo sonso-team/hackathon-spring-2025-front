@@ -28,7 +28,6 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
   const { active } = useAppSelector((state) => state.paramsReducer);
   const { params } = useAppSelector((state) => state.paramsReducer);
   const setData = (id: string) => {
-    console.log('ivan');
     dispatch(
       setStats({
         personName: id,
@@ -119,19 +118,6 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
           </div>
         </div>
       </div>
-      {/*
-      <Input
-        ref={passwordRef}
-        initialValue=""
-        validations={[]}
-        type="password"
-        className=""
-        name="password"
-        placeholder="Пароль"
-        onChange={() => {
-          console.log(passwordRef.current.value);
-        }}
-      /> */}
       <Button
         className="SettingsModal__Button"
         onClick={() => {
