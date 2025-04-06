@@ -9,13 +9,14 @@ import { RunnersList } from '../../widgets/RunnersList';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { Param } from '../../redux/store/params/types';
 import { setParams } from '../../redux/store/params';
+import { clearHistory, setStats } from '../../redux/store/params/paramsThunks';
 
 interface SettingsModalPropsI {
   closeHandler?(): void;
 }
 
 export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
-  const [active, setActive] = useState<string | null>(null);
+  //const [active, setActive] = useState<string | null>(null);
   const reactionTimeRef = useRef<InputRef>(null);
   const accelerationRef = useRef<InputRef>(null);
   const maxSpeedRef = useRef<InputRef>(null);
@@ -24,17 +25,19 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
     (state) => state.runnersReducer,
   );
   const dispatch = useAppDispatch();
+  const { active } = useAppSelector((state) => state.paramsReducer);
+  const { params } = useAppSelector((state) => state.paramsReducer);
   const setData = (id: string) => {
+    console.log('ivan');
     dispatch(
-      setParams({
-        param: {
-          name: id,
-          reactionTime: Number(reactionTimeRef.current.value),
-          acceleration: Number(accelerationRef.current.value),
-          maxSpeed: Number(maxSpeedRef.current.value),
-          decay: Number(decayRef.current.value),
-        },
+      setStats({
+        personName: id,
+        reactionTime: Number(reactionTimeRef.current.value),
+        acceleration: Number(accelerationRef.current.value),
+        maxSpeed: Number(maxSpeedRef.current.value),
+        lsf: Number(decayRef.current.value),
       }),
+      //clearHistory(null)
     );
   };
   return (
@@ -132,7 +135,7 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
       <Button
         className="SettingsModal__Button"
         onClick={() => {
-          //setData();
+          setData(active);
         }}
       >
         Сохранить

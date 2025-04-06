@@ -5,6 +5,9 @@ import { Input } from '../Input';
 import { Button } from '../Button';
 import './login-modal.scss';
 import { iconMap } from '../../utils/iconMap';
+import type { IAuthData } from '../../redux/store/auth/types';
+import { login } from '../../redux/store/auth/authThunks';
+import { useAppDispatch } from '../../redux/hooks';
 
 interface LoginModalPropsI {
   closeHandler?(): void;
@@ -13,6 +16,16 @@ interface LoginModalPropsI {
 export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
   const loginRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
+  const dispatch = useAppDispatch();
+  const handleLogin = () => {
+    dispatch(
+      login({
+        login: loginRef.current.value,
+        password: passwordRef.current.value,
+      }),
+    );
+  };
+
   return (
     <div className="LoginModal">
       <img
@@ -50,7 +63,9 @@ export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
       />
       <Button
         className="LoginModal__Button"
-        onClick={() => {}}
+        onClick={() => {
+          handleLogin();
+        }}
       >
         Войти
       </Button>
