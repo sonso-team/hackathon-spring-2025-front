@@ -69,19 +69,24 @@ export const HomePage: React.FC = () => {
     };
   }, []);
 
-  const { history, currentRun, isRunning, lastResults } = useAppSelector(
-    (state) => state.runnersReducer,
-  );
+  const { history, currentRun, isRunning, lastResults, remainBefore } =
+    useAppSelector((state) => state.runnersReducer);
 
   return (
     <div className="HomePage">
       <SideNav />
       <section className="HomePage__content">
-        <img
-          src={transaltion}
+        <iframe
           className="HomePage__translation"
-          alt="translation"
-        />
+          width="100%"
+          height="500px"
+          src={`https://www.youtube.com/embed/-mk7HE59e8Y?autoplay=1&mute=1&start=${isRunning ? new Date(remainBefore).getSeconds() : '0'}&controls=0`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+        ></iframe>
+
         <div className="HomePage__widgets">
           <RunVisualizer
             currentRun={currentRun.length ? currentRun : lastResults}

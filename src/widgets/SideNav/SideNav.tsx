@@ -6,6 +6,7 @@ import { Button } from '../../components/Button';
 import { useModal } from '../../utils/useModal';
 import { useAppSelector } from '../../redux/hooks';
 import { SettingsModal } from '../../components/SettingsModal';
+import { LoginModal } from '../../components/LoginModal';
 
 export const SideNav: React.FC = () => {
   const { showModal } = useModal();
