@@ -4,11 +4,11 @@ export interface IParamsState {
 }
 
 export interface Param {
-  name: string;
-  reactionTime: number;
-  acceleration: number;
-  maxSpeed: number;
-  decay: number;
+  personName: string;
+  reactionTime?: number;
+  acceleration?: number;
+  maxSpeed?: number;
+  lsf?: number;
 }
 
 export interface IParams {
@@ -17,4 +17,13 @@ export interface IParams {
 
 export interface IActive {
   active: string;
+}
+
+export interface IParamsError {
+  error: string;
+}
+
+export interface IParamsResponse {
+  message: string;
+  error?: string;
 }

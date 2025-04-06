@@ -38,7 +38,7 @@ export const RunnersList: React.FC<RunnerListPropsI> = memo(
                 src={iconMap[item.id]}
                 isSettingsMode
                 onClick={() => {
-                  setActiveRunner({ active: colorMap[item.id] });
+                  setActiveRunner({ active: item.id });
                 }}
               />
             );

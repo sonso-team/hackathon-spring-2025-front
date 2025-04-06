@@ -43,7 +43,7 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
 
   const [value, setValue] = useState<string>(initialValue);
   const [isDirty, setIsDirty] = useState<boolean>(false);
-  const [isValueHidden, setIsValueHidden] = useState<boolean>(false);
+  const [isValueHidden, setIsValueHidden] = useState<boolean>(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useImperativeHandle(

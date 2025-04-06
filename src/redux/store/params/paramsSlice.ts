@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { HistoryItem } from '../../../types';
 import type { IAuthResponse } from '../auth/types';
 import type { IActive, IParams, IParamsState, Param } from './types.ts';
+import { setStats } from './paramsThunks.ts';
 
 const initialState: IParamsState = {
   params: [],
