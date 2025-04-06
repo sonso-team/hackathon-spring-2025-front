@@ -132,7 +132,7 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
       <Button
         className="SettingsModal__Button"
         onClick={() => {
-          setData();
+          //setData();
         }}
       >
         Сохранить
