@@ -1,13 +1,16 @@
 import type React from 'react';
 import './avatar.scss';
 import { Place } from '../Place';
+import { useAppDispatch } from '../../redux/hooks';
 
 interface AvatarPropsI {
   color: string;
   src: string;
   className?: string;
   isMini?: boolean;
+  isSettingsMode?: boolean;
   place?: number;
+  onClick?(): void;
 }
 
 export const Avatar: React.FC<AvatarPropsI> = ({
@@ -15,10 +18,15 @@ export const Avatar: React.FC<AvatarPropsI> = ({
   src,
   className,
   isMini = false,
+  isSettingsMode = false,
   place = null,
+  onClick,
 }) => {
   return (
-    <div className={`Avatar ${className}`}>
+    <div
+      className={`Avatar ${className} ${isSettingsMode ? 'avatar-settings' : ''}`}
+      onClick={onClick}
+    >
       {place && (
         <Place
           className="Avatar__Place"

@@ -34,7 +34,6 @@ export const HomePage: React.FC = () => {
   const { history, currentRun, isRunning } = useAppSelector(
     (state) => state.runnersReducer,
   );
-
   return (
     <>
       <header className="header">

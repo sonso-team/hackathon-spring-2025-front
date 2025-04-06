@@ -1,0 +1,39 @@
+.SettingsModal {
+  width: 520px;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &__Cross {
+    position: absolute;
+    top: 0;
+    right: 0;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__ComponentsWrapper {
+    display: flex;
+    align-items: center;
+    &__InputWrapper {
+      display: flex;
+      flex-direction: column;
+      row-gap: 48px;
+      &__Input {
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        row-gap: 16px;
+      }
+    }
+  }
+  &__Button {
+    background-color: var(--dark-grey);
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    &:hover {
+      background-color: var(--light-dark-grey);
+    }
+  }
+}

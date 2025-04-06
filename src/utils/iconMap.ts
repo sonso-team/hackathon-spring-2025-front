@@ -3,6 +3,7 @@ import errorSvg from './../assets/icons/error.svg';
 import logoSvg from './../assets/icons/logo.svg';
 import crossSvg from './../assets/icons/cross.svg';
 import progressLineSvg from './../assets/icons/progress-line.svg';
+import editSvg from './../assets/icons/edit.svg';
 import ava1 from './../assets/images/person1.jpg';
 import ava2 from './../assets/images/person2.jpg';
 import ava3 from './../assets/images/person3.jpg';
@@ -16,6 +17,7 @@ export const iconMap = {
   logo: logoSvg,
   cross: crossSvg,
   progressLine: progressLineSvg,
+  edit: editSvg,
   a: ava1,
   b: ava2,
   c: ava3,
