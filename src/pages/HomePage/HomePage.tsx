@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import './home-page.scss';
 import { SideNav } from '../../widgets/SideNav';
-import transaltion from '/src/assets/images/transaltion.png';
 import { LastRuns } from '../../widgets/LastRuns';
 import { Probabilities } from '../../widgets/Probabilities';
 import { socket } from '../../services/webSocket';
@@ -82,7 +81,6 @@ export const HomePage: React.FC = () => {
           height="500px"
           src={`https://www.youtube.com/embed/-mk7HE59e8Y?autoplay=1&mute=1&start=${isRunning ? new Date(remainBefore).getSeconds() : '0'}&controls=0`}
           title="YouTube video player"
-          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
         ></iframe>
