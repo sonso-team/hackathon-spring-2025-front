@@ -17,6 +17,7 @@ const runnersSlice = createSlice({
     updateData(state: IRunnersState, action: PayloadAction<IRunnersResponse>) {
       state.lastResults = action.payload.lastResults;
       state.history = action.payload.history;
+      state.currentRun = action.payload.currentRun;
       state.isRunning = action.payload.isRunning;
       state.remainBefore = action.payload.remainBefore;
     },
