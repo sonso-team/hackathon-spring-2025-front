@@ -4,7 +4,6 @@ import { Logo } from '../../components/Logo';
 import { RunnersList } from '../RunnersList';
 import { Button } from '../../components/Button';
 import { useModal } from '../../utils/useModal';
-import { LoginModal } from '../../components/LoginModal';
 import { useAppSelector } from '../../redux/hooks';
 import { SettingsModal } from '../../components/SettingsModal';
 
