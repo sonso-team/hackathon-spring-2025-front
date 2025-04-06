@@ -6,7 +6,7 @@ import type { IActive, IParams, IParamsState, Param } from './types.ts';
 import { setStats } from './paramsThunks.ts';
 
 const initialState: IParamsState = {
-  params: [],
+  params: {},
   active: '',
 };
 
@@ -15,7 +15,7 @@ const paramsSlice = createSlice({
   initialState,
   reducers: {
     setParams(state: IParamsState, action: PayloadAction<IParams>) {
-      state.params.push(action.payload.param);
+      state.params[state.active] = action.payload.param;
     },
     setActive(state: IParamsState, action: PayloadAction<IActive>) {
       state.active = action.payload.active;

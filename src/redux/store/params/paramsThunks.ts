@@ -17,22 +17,32 @@ const setStats = createAsyncThunk<
   IParamsResponse,
   Param,
   { rejectValue: IParamsError }
->('set-stats', async (params, { rejectWithValue }) => {
-  try {
-    const response: AxiosResponse<IParamsResponse> = await api.put(
-      PARAMS_SEND,
-      {
-        params,
-      },
-    );
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    return rejectWithValue({
-      error: error?.response?.data?.message || error.message,
-    });
-  }
-});
+>(
+  'set-stats',
+  async (
+    { personName, reactionTime, acceleration, maxSpeed, lsf },
+    { rejectWithValue },
+  ) => {
+    try {
+      const response: AxiosResponse<IParamsResponse> = await api.put(
+        PARAMS_SEND,
+        {
+          personName,
+          reactionTime,
+          acceleration,
+          maxSpeed,
+          lsf,
+        },
+      );
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue({
+        error: error?.response?.data?.message || error.message,
+      });
+    }
+  },
+);
 
 const clearHistory = createAsyncThunk<
   IParamsResponse,

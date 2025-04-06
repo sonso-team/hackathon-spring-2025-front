@@ -13,12 +13,16 @@ export const SideNav: React.FC = () => {
   const { currentRun, lastResults } = useAppSelector(
     (state) => state.runnersReducer,
   );
+  const { isAuth } = useAppSelector((state) => state.authReducer);
+  //const isAuth = true;
   return (
     <aside className="sidenav">
       <Logo />
       <Button
         onClick={() => {
-          showModal({ overrideContent: <LoginModal /> });
+          showModal({
+            overrideContent: isAuth ? <SettingsModal /> : <LoginModal />,
+          });
         }}
       >
         Настройки

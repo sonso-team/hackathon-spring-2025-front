@@ -29,6 +29,17 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
   const { params } = useAppSelector((state) => state.paramsReducer);
   const setData = (id: string) => {
     dispatch(
+      setParams({
+        param: {
+          personName: id,
+          reactionTime: Number(reactionTimeRef.current.value),
+          acceleration: Number(accelerationRef.current.value),
+          maxSpeed: Number(maxSpeedRef.current.value),
+          lsf: Number(decayRef.current.value),
+        },
+      }),
+    );
+    dispatch(
       setStats({
         personName: id,
         reactionTime: Number(reactionTimeRef.current.value),
@@ -60,72 +71,86 @@ export const SettingsModal: React.FC<SettingsModalPropsI> = ({ ...props }) => {
             <Paragraph level={2}>Время реакции на старте</Paragraph>
             <Input
               ref={reactionTimeRef}
-              initialValue=""
+              initialValue={
+                params[active]?.reactionTime
+                  ? String(params[active]?.reactionTime)
+                  : ''
+              }
               validations={[]}
               type="number"
               className=""
               name="reactionTime"
               placeholder="(0,1 - 0,3)"
-              onChange={() => {
-                console.log(reactionTimeRef.current.isError);
-              }}
+              onChange={() => {}}
             />
           </div>
           <div className="SettingsModal__ComponentsWrapper__InputWrapper__Input">
             <Paragraph level={2}>Ускорение</Paragraph>
             <Input
               ref={accelerationRef}
-              initialValue=""
+              initialValue={
+                params[active]?.acceleration
+                  ? String(params[active]?.acceleration)
+                  : ''
+              }
               validations={[]}
               type="number"
               className=""
               name="acceleration"
               placeholder="(м/с^2)"
-              onChange={() => {
-                console.log(accelerationRef.current.isError);
-              }}
+              onChange={() => {}}
             />
           </div>
           <div className="SettingsModal__ComponentsWrapper__InputWrapper__Input">
             <Paragraph level={2}>Максимальная скорость</Paragraph>
             <Input
               ref={maxSpeedRef}
-              initialValue=""
+              initialValue={
+                params[active]?.maxSpeed ? String(params[active]?.maxSpeed) : ''
+              }
               validations={[]}
               type="number"
               className=""
               name="maxSpeed"
               placeholder="(м/с)"
-              onChange={() => {
-                console.log(maxSpeedRef.current.isError);
-              }}
+              onChange={() => {}}
             />
           </div>
           <div className="SettingsModal__ComponentsWrapper__InputWrapper__Input">
             <Paragraph level={2}>Коэффициент потери скорости</Paragraph>
             <Input
               ref={decayRef}
-              initialValue=""
+              initialValue={
+                params[active]?.lsf ? String(params[active]?.lsf) : ''
+              }
               validations={[]}
               type="number"
               className=""
               name="decay"
               placeholder="(на финальной стадии)"
-              onChange={() => {
-                console.log(decayRef.current.isError);
-              }}
+              onChange={() => {}}
             />
           </div>
         </div>
       </div>
-      <Button
-        className="SettingsModal__Button"
-        onClick={() => {
-          setData(active);
-        }}
-      >
-        Сохранить
-      </Button>
+      <div className="SettingsModal__ButtonWrapper">
+        <Button
+          className="SettingsModal__ButtonWrapper__Button"
+          onClick={() => {
+            setData(active);
+          }}
+        >
+          Сохранить
+        </Button>
+        <Button
+          className="SettingsModal__ButtonWrapper__Button clear"
+          onClick={() => {
+            dispatch(clearHistory(null));
+          }}
+        >
+          Очистить историю
+        </Button>
+      </div>
     </div>
   );
 };
