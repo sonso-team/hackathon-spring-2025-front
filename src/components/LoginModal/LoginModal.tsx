@@ -8,12 +8,15 @@ import { iconMap } from '../../utils/iconMap';
 import type { IAuthData } from '../../redux/store/auth/types';
 import { login } from '../../redux/store/auth/authThunks';
 import { useAppDispatch } from '../../redux/hooks';
+import { useModal } from '../../utils/useModal';
+import { SettingsModal } from '../SettingsModal';
 
 interface LoginModalPropsI {
   closeHandler?(): void;
 }
 
 export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
+  const { showModal } = useModal();
   const loginRef = useRef<InputRef>(null);
   const passwordRef = useRef<InputRef>(null);
   const dispatch = useAppDispatch();
@@ -24,6 +27,7 @@ export const LoginModal: React.FC<LoginModalPropsI> = ({ ...props }) => {
         password: passwordRef.current.value,
       }),
     );
+    props.closeHandler();
   };
 
   return (
