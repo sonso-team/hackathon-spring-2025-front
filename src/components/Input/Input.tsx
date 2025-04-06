@@ -37,7 +37,7 @@ export const Input = forwardRef<InputRef, InputPropsI>((props, ref) => {
     placeholder,
     onChange,
   } = props;
-
+  console.log(props);
   // Служебный ref для самого <input/>
   const inputEl = useRef<HTMLInputElement | null>(null);
 

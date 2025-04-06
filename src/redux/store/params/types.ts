@@ -1,5 +1,5 @@
 export interface IParamsState {
-  params: Param[];
+  params: Record<string, Param>;
   active: string;
 }
 
