@@ -4,10 +4,9 @@ import { SideNav } from '../../widgets/SideNav';
 import transaltion from '/src/assets/images/transaltion.png';
 import { LastRuns } from '../../widgets/LastRuns';
 import { Probabilities } from '../../widgets/Probabilities';
-import { Logo } from '../../components/Logo';
 import { socket } from '../../services/webSocket';
 import { hideLocalLoader, showLocalLoader } from '../../redux/store/loader';
-import { syncData, updateData } from '../../redux/store/runners/runnersSlice';
+import { syncData, updateData } from '../../redux/store/runners';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { RunVisualizer } from '../../widgets/RunVisualizer';
 import { PairProbabilities } from '../../widgets/PairProbabilities';
@@ -31,14 +30,11 @@ export const HomePage: React.FC = () => {
     socket.onmessage = messageHandler;
   }, []);
 
-  const { history, currentRun, isRunning } = useAppSelector(
+  const { history, currentRun, isRunning, lastResults } = useAppSelector(
     (state) => state.runnersReducer,
   );
   return (
     <>
-      <header className="header">
-        <Logo />
-      </header>
       <div className="HomePage">
         <SideNav />
         <section className="HomePage__content">
@@ -48,7 +44,9 @@ export const HomePage: React.FC = () => {
             alt="translation"
           />
           <div className="HomePage__widgets">
-            <RunVisualizer currentRun={currentRun} />
+            <RunVisualizer
+              currentRun={currentRun.length ? currentRun : lastResults}
+            />
             <LastRuns history={history} />
             <Probabilities
               probabilities={currentRun}
