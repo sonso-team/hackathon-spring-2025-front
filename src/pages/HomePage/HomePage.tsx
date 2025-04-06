@@ -31,14 +31,11 @@ export const HomePage: React.FC = () => {
     socket.onmessage = messageHandler;
   }, []);
 
-  const { history, currentRun, isRunning } = useAppSelector(
+  const { history, currentRun, isRunning, lastResults } = useAppSelector(
     (state) => state.runnersReducer,
   );
   return (
     <>
-      <header className="header">
-        <Logo />
-      </header>
       <div className="HomePage">
         <SideNav />
         <section className="HomePage__content">
@@ -48,7 +45,9 @@ export const HomePage: React.FC = () => {
             alt="translation"
           />
           <div className="HomePage__widgets">
-            <RunVisualizer currentRun={currentRun} />
+            <RunVisualizer
+              currentRun={currentRun.length ? currentRun : lastResults}
+            />
             <LastRuns history={history} />
             <Probabilities
               probabilities={currentRun}
