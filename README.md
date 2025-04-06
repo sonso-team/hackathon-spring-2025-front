@@ -19,22 +19,22 @@
 Установи зависимости:
 
 bash
-Копировать
-Редактировать
+```bash
 npm install
+```
 # или
+```bash
 yarn install
+```
 Запусти проект:
-
-bash
-Копировать
-Редактировать
+```bash
 npm run dev
+```
 # или
+```bash
 yarn dev
+```
 Открой в браузере:
-
-arduino
-Копировать
-Редактировать
 http://localhost:5173
+# или
+https://hack.uwu-devcrew.ru/
